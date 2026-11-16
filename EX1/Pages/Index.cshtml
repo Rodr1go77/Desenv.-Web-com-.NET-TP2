@@ -1,0 +1,11 @@
+﻿@page
+@model CityManagerModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form action="/" method="post">
+	Cidade: <input type="text" name="CityName" value="@Model.CityName" />
+	<button type="submit">Enviar</button>
+</form>
+
