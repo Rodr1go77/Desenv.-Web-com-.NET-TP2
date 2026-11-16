@@ -7,7 +7,6 @@ namespace EX1.Pages
     {
         public void OnGet()
         {
-
         }
     }
 }

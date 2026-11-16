@@ -1,0 +1,27 @@
+﻿@page
+@model EX1.Pages.CityManager.CreateCityModel
+@{
+	ViewData["Title"] = "Create City";
+}
+
+<h2>Cadastrar Cidade</h2>
+
+<form method="post">
+
+	<div class="mb-3">
+
+		<label asp-for="CityName" class="form-label"></label>
+		<input asp-for="CityName" class="form-control" />
+	</div>
+	<button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
+	<br />	
+	<br />
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.CityName))
+{
+	<div class="alert alert-success" role="alert">
+		Cidade Cadastrada: @Model.CityName
+	</div>
+}
+
