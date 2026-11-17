@@ -37,7 +37,7 @@ namespace EX6.Pages.CityManager
             public string CountryName { get; set; } = string.Empty;
 
             [Required(ErrorMessage = "O código do país é obrigatório.")]
-            [StringLength(2,MinimumLength = 2, ErrorMessage = "O código do país deve ter 3 caracteres.")]
+            [StringLength(2,MinimumLength = 2, ErrorMessage = "O código do país deve ter 2 caracteres.")]
             public string CountryCode { get; set; } = string.Empty;
         }
     }
