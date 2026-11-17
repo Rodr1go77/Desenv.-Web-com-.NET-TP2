@@ -1,0 +1,35 @@
+﻿@page
+@model EX6.Pages.CityManager.CreateCountryModel
+@{
+	ViewData["Title"] = "Criar País";	
+}
+
+<h2>Cadastrar País</h2>
+
+<form method="post">
+
+	<div class="mb-3">
+		<label asp-for="Input.CountryName" class="form-label">Nome do país:</label>
+		<input asp-for="Input.CountryName" class="form-control" />
+		<span asp-validation-for="Input.CountryName" class="text-danger"></span>
+	</div>
+	<div class="mb-3">
+		<label asp-for="Input.CountryCode" class="form-label">Código do
+		país:</label>
+		<input asp-for="Input.CountryCode" class="form-control" />
+		<span asp-validation-for="Input.CountryCode" class="text-danger"></span>
+
+	</div>
+	<button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
+</form>
+
+@if (Model.NewCountry != null)
+{
+	<div class="alert alert-success mt-3" role="alert">
+		País cadastrado com sucesso: @Model.NewCountry.CountryName (Código: @Model.NewCountry.CountryCode)
+	</div>
+}
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
