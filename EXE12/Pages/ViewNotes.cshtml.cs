@@ -1,0 +1,62 @@
+/*
+11 Manipulação de Arquivos: Leitura
+Adicione uma funcionalidade que leia os arquivos .txt do diretório wwwroot/files
+e exiba seus conteúdos.
+Tarefas:
+Liste todos os arquivos da pasta files.
+Mostre links para visualização.
+Abra e exiba o conteúdo do arquivo selecionado.
+*/
+
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+
+namespace EXE11.Pages
+{
+    public class ViewNotesModel : PageModel
+    {
+        private readonly IWebHostEnvironment _environment;
+
+        public ViewNotesModel(IWebHostEnvironment environment)
+        {
+            _environment = environment;
+        }
+
+        public List<string> ArquivosDisponiveis { get; set; } = [];
+
+        public string? ArquivoSelecionado { get; set; }
+        public string? ConteudoArquivo { get; set; }
+
+
+        public async Task OnGetAsync(string? arquivo)
+        {
+            string diretorioArquivos = Path.Combine(_environment.WebRootPath, "files");
+
+            if(Directory.Exists(diretorioArquivos))
+            {
+                ArquivosDisponiveis = Directory.GetFiles(diretorioArquivos, "*.txt")
+                    .Select(Path.GetFileName)
+                    .Where(nome => nome is not null)
+                    .Cast<string>()
+                    .ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(arquivo))
+            {
+                string nomeSeguro = Path.GetFileName(arquivo);
+                string caminhoCompleto = Path.Combine(diretorioArquivos, nomeSeguro);
+
+                if (System.IO.File.Exists(caminhoCompleto))
+                {
+                    ArquivoSelecionado = nomeSeguro;
+                    using var reader = new StreamReader(caminhoCompleto);
+                    ConteudoArquivo = await reader.ReadToEndAsync();
+                }
+
+
+            }
+
+        }
+
+    }
+}

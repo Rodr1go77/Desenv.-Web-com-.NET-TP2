@@ -1,0 +1,28 @@
+﻿@page
+@model EXE11.Pages.SaveNoteModel
+@{
+	ViewData["Title"] = "Salvar Note";
+
+}
+
+<form method="post">
+	<div class="mb-3">
+		<label asp-for="Input.Content" class="form-label">Digite o texto a ser salvo no arquivo:</label>
+		<textarea asp-for="Input.Content" class="form-control" rows="4"></textarea>
+		<span asp-validation-for="Input.Content" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.NomeArquivo))
+{
+	<div class="alert alert-success mt-3" role="alert">
+		Arquivo salvo com sucesso: @Model.NomeArquivo
+		<a href="~/arquivosEXE10/@Model.NomeArquivo" download class="alert-link">Baixar Arquivo</a>
+	</div>
+}
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+

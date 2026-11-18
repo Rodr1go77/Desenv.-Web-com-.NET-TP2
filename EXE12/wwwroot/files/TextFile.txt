@@ -1,0 +1,1 @@
+﻿Teste da questão de leitura do arquivo de texto. EXE11
