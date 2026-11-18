@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EXE10.Pages
+namespace EXE11.Pages
 {
     public class SaveNoteModel : PageModel
     {
@@ -24,7 +24,7 @@ namespace EXE10.Pages
         }
 
         [BindProperty]
-        public InputModel Input { get; set; } = new()
+        public InputModel Input { get; set; } = new();
         public string? NomeArquivo { get; set; }
 
         public void OnGet()

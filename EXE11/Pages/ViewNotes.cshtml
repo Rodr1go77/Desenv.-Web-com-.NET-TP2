@@ -1,0 +1,36 @@
+﻿@page
+@model EXE11.Pages.ViewNotesModel
+@{
+	ViewData["Title"] = "Ler Arquivos";
+
+}
+
+<h2>Arquivos Disponíveis</h2>
+
+@if (Model.ArquivosDisponiveis.Any())
+{
+    <ul class="list-group mb-4">
+        @foreach (var nomeArquivo in Model.ArquivosDisponiveis)
+        {
+            <li class="list-group-item">
+                <a asp-page="/ViewNotes" asp-route-arquivo="@nomeArquivo">@nomeArquivo</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p class="text-muted">Nenhum arquivo .txt encontrado na pasta.</p>
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.ConteudoArquivo))
+{
+    <div class="card">
+        <div class="card-header">
+            Conteúdo de: <strong>@Model.ArquivoSelecionado</strong>
+        </div>
+        <div class="card-body">
+            <pre class="mb-0">@Model.ConteudoArquivo</pre>
+        </div>
+    </div>
+}

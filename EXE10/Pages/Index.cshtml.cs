@@ -10,7 +10,7 @@ Verifique se os links direcionam corretamente para CityDetails.
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EXE10.Pages
+namespace EXE11.Pages
 {
     public class IndexModel : PageModel
     {

@@ -1,0 +1,22 @@
+﻿@page
+@model EXE10.Pages.IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+
+<h2 class="display-4">Gerenciador de Cidades Turísticas</h2>
+
+<h3>Cidades Disponíveis</h3>
+
+
+@if (Model.Cities.Any())
+{
+	<ul class="list-group">
+		@foreach (var city in Model.Cities)
+		{
+			<li class="list-group-item">
+				<a asp-page="/CityManager/CityDetails" asp-route-cityName="@city">@city</a>
+			</li>
+		}
+	</ul>
+}

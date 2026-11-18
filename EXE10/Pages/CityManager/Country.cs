@@ -1,4 +1,4 @@
-﻿namespace EXE10.Pages.CityManager
+﻿namespace EXE11.Pages.CityManager
 {
     public class Country
     {
